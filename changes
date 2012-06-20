@@ -62,14 +62,20 @@ next to do:
 
  - The sessions lib is being included in multiple locations throughout the code. As it going to be used
    almost universally it can instead be included in /application/config/autoload.php 
+	= yes can be tidied up alright!
 
  - Similarly $this->my_session->checkAuth is being performed in a number of different locations which
    makes it easier for it to be left out and result in security issues. We should look at drawing out
    structure of each control and decide which functionality should be implemented where. Any duplicated
    code should be refactored to avoid repeating ourselves.
+	= we could put the checkAuth function in the constructor, and have it pull the level of 
+	  authentication required from a db, to make it easier to manage. can then include it universally
+	  as above in /application/config/autoload.php
 
  - What is the purpose of the home controller, it looks like it just duplicates the image class.
-   
+	= oops, the home controller is just for testing purposes, no need for it to be there and will be 
+	  removed on the next commit.
+
  - What are the differences between the user and the users class, These are interacting with one model, 
    so shouldn't they be one class? We can extend the class if needed rather than creating extra controllers.
-	
+	= this is true, can be tidied up alright!
